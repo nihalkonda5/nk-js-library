@@ -63,7 +63,7 @@ const timeContextualize = (date: Date) => {
     return val(Math.floor(seconds), 'second');
 }
 
-export default {
+export {
     generateRandomString,
     stripHtml,
     timeContextualize
