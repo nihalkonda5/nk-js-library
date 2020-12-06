@@ -1,0 +1,25 @@
+{
+  "name": "nk-js-library",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "npm run build",
+    "build": "tsc --build",
+    "git": "tsc --build && git add . && git commit -am 'Quick Commit' && git push -u origin master"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/firebase": "^3.2.1",
+    "@types/node-geocoder": "^3.24.1",
+    "@types/nodemailer": "^6.4.0",
+    "@types/nodemailer-smtp-transport": "^2.7.4",
+    "firebase": "^8.1.2",
+    "node-geocoder": "^3.27.0",
+    "nodemailer": "^6.4.16",
+    "nodemailer-smtp-transport": "^2.7.4",
+    "simple-encryptor": "^4.0.0"
+  }
+}
