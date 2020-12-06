@@ -8,7 +8,8 @@ interface Message{
     type:string,
     metadata?:any,
     notifications?:INotification[]
-    data:any
+    data:any,
+    [key:string]:any
 }
 
 interface Subscriber{

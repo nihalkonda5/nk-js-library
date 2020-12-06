@@ -8,6 +8,7 @@ interface Message {
     metadata?: any;
     notifications?: INotification[];
     data: any;
+    [key: string]: any;
 }
 interface Subscriber {
     processMessage(message: Message): any;
