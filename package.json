@@ -1,7 +1,7 @@
 {
   "name": "nk-js-library",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.1",
+  "description": "NK JS Library",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
@@ -25,6 +25,27 @@
     "node-geocoder": "^3.27.0",
     "nodemailer": "^6.4.16",
     "nodemailer-smtp-transport": "^2.7.4",
-    "simple-encryptor": "^4.0.0"
+    "simple-encryptor": "^4.0.0",
+    "ts-node": "^9.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.0.2"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "esmodules": true
+          }
+        }
+      ],
+      "@babel/preset-react",
+      "@babel/preset-flow"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-class-properties"
+    ]
   }
 }
