@@ -10,6 +10,9 @@
     "git": "tsc --build && git add . && git commit -am 'Quick Commit' && git push -u origin master",
     "got": "echo '${npm_config_msg}' > test"
   },
+  "files": [
+    "lib"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
