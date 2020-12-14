@@ -7,7 +7,7 @@
   "scripts": {
     "prepare": "npm run build",
     "build": "tsc --build",
-    "git": "tsc --build && git rm -r --cached . && git add . && git commit -am 'Quick Commit'",
+    "git": "tsc --build && git rm -r --cached . && git add . && git commit -am 'Quick Commit' && git push -u origin master",
     "got": "echo '${npm_config_msg}' > test"
   },
   "files": [
