@@ -1,55 +1,64 @@
-class Collection{
-    private data:Record<string,any>;
+class Collection {
+    private data: Record<string, any>;
 
-    constructor(){
-        this.data={};
+    constructor() {
+        this.data = {};
     }
 
-    putItem(key:string,value:any){
+    putItem(key: string, value: any) {
         this.data[key] = value;
         return this.data[key];
     }
 
-    getItem(key:string){
+    getItem(key: string) {
         return this.data[key];
     }
 
-    deleteItem(key:string){
+    deleteItem(key: string) {
         delete this.data[key];
     }
 
-    hasItem(key:string){
+    hasItem(key: string) {
         return key in this.data;
     }
 }
 
-class Database{
-    private collections:Record<string,Collection>;
+class Database {
+    private collections: Record<string, Collection>;
 
-    constructor(){
-        this.collections={};
+    constructor() {
+        this.collections = {};
     }
 
-    getCollection(name:string){
-        if(name in this.collections === false)
+    getCollection(name: string) {
+        if (name in this.collections === false)
             this.collections[name] = new Collection();
         return this.collections[name];
     }
 }
 
-class Cluster{
-    private databases:Record<string,Database>;
+class Cluster {
 
-    constructor(){
-        this.databases={};
+    private static instance: Cluster;
+
+    private databases: Record<string, Database>;
+
+    private constructor() {
+        this.databases = {};
     }
 
-    getDatabase(name:string){
-        if(name in this.databases === false)
+    static getInstance(): Cluster {
+        if (!Cluster.instance)
+            Cluster.instance = new Cluster();
+        return Cluster.instance;
+    }
+
+    getDatabase(name: string) {
+        if (name in this.databases === false)
             this.databases[name] = new Database();
         return this.databases[name];
     }
 }
 
-export default new Cluster();
+export default Cluster.getInstance();
 

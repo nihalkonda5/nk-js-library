@@ -14,9 +14,12 @@ interface Subscriber {
     processMessage(message: Message): any;
 }
 declare class Main {
+    private static instance;
     subscription: {
         [key: string]: Subscriber[];
     };
+    private constructor();
+    static getInstance(): Main;
     addSubscriberAll: (messageTypes: any, subscriber: Subscriber) => void;
     addSubscriber: (messageType: string, subscriber: Subscriber) => void;
     removeSubscriber: (messageType: string, subscriber: Subscriber) => void;

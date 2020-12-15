@@ -1,7 +1,10 @@
 declare class Main {
+    private static instance;
     bound: {
         [key: string]: Function;
     };
+    private constructor();
+    static getInstance(): Main;
     bindFunction: (name: string, func: Function) => void;
     boundFunction: (name: string) => Function;
 }

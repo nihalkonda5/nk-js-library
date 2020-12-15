@@ -12,8 +12,10 @@ declare class Database {
     getCollection(name: string): Collection;
 }
 declare class Cluster {
+    private static instance;
     private databases;
-    constructor();
+    private constructor();
+    static getInstance(): Cluster;
     getDatabase(name: string): Database;
 }
 declare const _default: Cluster;

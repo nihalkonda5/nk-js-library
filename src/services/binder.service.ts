@@ -1,15 +1,27 @@
-class Main{
+class Main {
 
-    bound : {[key:string]:Function} = {};
+    private static instance: Main;
 
-    bindFunction = (name:string,func:Function) => {
+    bound: { [key: string]: Function } = {};
+
+    private constructor() {
+        this.bound = {};
+    }
+
+    static getInstance(): Main {
+        if (!Main.instance)
+            Main.instance = new Main();
+        return Main.instance;
+    }
+
+    bindFunction = (name: string, func: Function) => {
         this.bound[name] = func;
     }
 
-    boundFunction = (name:string) => {
+    boundFunction = (name: string) => {
         return this.bound[name];
     }
-    
+
 }
 
-export default new Main();
+export default Main.getInstance();

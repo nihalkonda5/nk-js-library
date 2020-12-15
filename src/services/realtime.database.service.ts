@@ -10,7 +10,20 @@ interface props {
 }
 
 class RealtimeDatabase {
+
+    private static instance: RealtimeDatabase;
+
     app: firebase.app.App;
+
+    private constructor() {
+
+    }
+
+    static getInstance(): RealtimeDatabase {
+        if (!RealtimeDatabase.instance)
+            RealtimeDatabase.instance = new RealtimeDatabase();
+        return RealtimeDatabase.instance;
+    }
 
     getApp = ({ options }: props) => {
         //console.log({});
@@ -60,4 +73,4 @@ class RealtimeDatabase {
     }
 }
 
-export default new RealtimeDatabase();
+export default RealtimeDatabase.getInstance();
