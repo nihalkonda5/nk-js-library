@@ -69,7 +69,7 @@ class Main {
                         try {
                             subscriber.processMessage(message);
                         } catch (error) {
-                            console.log(error)
+                            console.error('publishMessage error handler', error)
                         }
                     }
                 }
