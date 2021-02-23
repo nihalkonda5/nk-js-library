@@ -6,4 +6,5 @@ declare const generateRandomString: ({ length, capitalAlpha, lowerAlpha, numbers
 }) => string;
 declare const stripHtml: (html: any) => string;
 declare const timeContextualize: (date: Date) => string;
-export { generateRandomString, stripHtml, timeContextualize };
+declare function shuffleArray<T>(array: T[]): T[];
+export { generateRandomString, stripHtml, timeContextualize, shuffleArray };
