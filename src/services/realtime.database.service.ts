@@ -69,7 +69,7 @@ class RealtimeDatabase {
         value = value || {};
 
         return new Promise((resolve, reject) => {
-            this.getPath({ options, url, path }).update(value, (error) => {
+            this.getPath({ options, url, path }).set(value, (error) => {
                 if (error) {
                     reject(error)
                 } else {
