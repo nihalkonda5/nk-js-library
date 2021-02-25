@@ -64,6 +64,21 @@ class RealtimeDatabase {
         })
     }
 
+    setPathValue = ({ options, url, path, value }: props) => {
+        //console.log({url,path,value});
+        value = value || {};
+
+        return new Promise((resolve, reject) => {
+            this.getPath({ options, url, path }).update(value, (error) => {
+                if (error) {
+                    reject(error)
+                } else {
+                    resolve(true)
+                }
+            });
+        })
+    }
+
     observePath = ({ options, url, path, callback }: props) => {
         callback = callback || ((snapshot: firebase.database.DataSnapshot) => { });
 

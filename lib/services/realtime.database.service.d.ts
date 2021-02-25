@@ -16,6 +16,7 @@ declare class RealtimeDatabase {
     getDb: ({ options, url }: props) => firebase.database.Database;
     getPath: ({ options, url, path }: props) => firebase.database.Reference;
     pushToPath: ({ options, url, path, value }: props) => Promise<unknown>;
+    setPathValue: ({ options, url, path, value }: props) => Promise<unknown>;
     observePath: ({ options, url, path, callback }: props) => void;
 }
 declare const _default: RealtimeDatabase;
