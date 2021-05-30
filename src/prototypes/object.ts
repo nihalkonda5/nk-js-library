@@ -1,6 +1,10 @@
 declare global {
     interface Object {
-        normalizeJSON(): Object;
+        normalizeJSON(props?: {
+            undefinedOk?: boolean,
+            nullOk?: boolean,
+            zeroOk?: boolean
+        }): Object;
         keySet(): string[];
     }
 }
@@ -9,7 +13,11 @@ Object.prototype.keySet = function () {
     return Object.keys(this);
 }
 
-Object.prototype.normalizeJSON = function () {
+Object.prototype.normalizeJSON = function ({ undefinedOk, nullOk, zeroOk }: {
+    undefinedOk?: boolean,
+    nullOk?: boolean,
+    zeroOk?: boolean
+}) {
     console.log('normalizeJson', this);
     if (this instanceof Array)
         return this
@@ -22,7 +30,11 @@ Object.prototype.normalizeJSON = function () {
     for (const k of keys) {
         if (this[k] instanceof Object) {
             data[k] = this[k].normalizeJSON();
-        } else if (this[k] !== undefined) {
+        } else if (
+            (undefinedOk || (this[k] !== undefined)) &&
+            (nullOk || (this[k] !== null)) &&
+            (zeroOk || (this[k] !== 0))
+        ) {
             data[k] = this[k];
         }
     }

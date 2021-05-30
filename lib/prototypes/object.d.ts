@@ -1,6 +1,10 @@
 declare global {
     interface Object {
-        normalizeJSON(): Object;
+        normalizeJSON(props?: {
+            undefinedOk?: boolean;
+            nullOk?: boolean;
+            zeroOk?: boolean;
+        }): Object;
         keySet(): string[];
     }
 }
