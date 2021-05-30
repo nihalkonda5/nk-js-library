@@ -2,10 +2,10 @@ import * as encryptor from 'simple-encryptor';
 
 declare global {
     interface String {
-        encrypt(): string;
-        decrypt(): string;
+        encrypt(key?: string): string;
+        decrypt(key?: string): string;
         stripHtml(): string;
-        random(): string;
+        random(length?: number): string;
     }
 }
 
