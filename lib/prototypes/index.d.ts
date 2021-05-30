@@ -1,5 +1,5 @@
 import './array';
 import './string';
-import './object';
+import './json';
 import './date';
 export {};
