@@ -8,7 +8,7 @@ declare global {
     }
 }
 
-JSON.normalize = function (a: object, { undefinedOk, nullOk, zeroOk }: {
+JSON.normalize = function (a: object, props: {
     undefinedOk?: boolean,
     nullOk?: boolean,
     zeroOk?: boolean
@@ -22,13 +22,19 @@ JSON.normalize = function (a: object, { undefinedOk, nullOk, zeroOk }: {
     if (keys.length === 0)
         return a;
 
+    props = props || {
+        undefinedOk: false,
+        nullOk: false,
+        zeroOk: false
+    };
+
     for (const k of keys) {
         if (a[k] instanceof Object) {
             data[k] = a[k].normalizeJSON();
         } else if (
-            (undefinedOk || (a[k] !== undefined)) &&
-            (nullOk || (a[k] !== null)) &&
-            (zeroOk || (a[k] !== 0))
+            (props.undefinedOk || (a[k] !== undefined)) &&
+            (props.nullOk || (a[k] !== null)) &&
+            (props.zeroOk || (a[k] !== 0))
         ) {
             data[k] = a[k];
         }
