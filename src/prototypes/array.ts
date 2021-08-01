@@ -6,6 +6,7 @@ declare global {
         shuffle(): void;
         shuffledClone(): T[];
         numberSort(): void;
+        isEmpty(): boolean;
         iterate(
             callback: iterateCallback<T>,
             options?: {
@@ -45,7 +46,11 @@ Array.prototype.shuffledClone = function () {
 }
 
 Array.prototype.numberSort = function (ascending = true) {
-    this.sort((a, b) => ascending ? a - b : b - a);
+    this.sort((a: number, b: number) => ascending ? a - b : b - a);
+};
+
+Array.prototype.isEmpty = function () {
+    return this.length === 0;
 };
 
 Array.prototype.iterate = function <T>(
@@ -57,9 +62,14 @@ Array.prototype.iterate = function <T>(
     }
 ) {
     const len: number = this.length;
-    for (let i = 0; i < len; i += (options && options.increment) ? options.increment : 1) {
-        const index = options && options.reverse ? len - i - 1 : i;
-        if (callback.apply((options && options.thisArg) || this, [this[index], index, this, len]) === false) break;
+    options = JSON.defaultJSON(options, {
+        reverse: false,
+        thisArg: this,
+        increment: 1
+    });
+    for (let i = 0; i < len; i += options.increment) {
+        const index = options.reverse ? len - i - 1 : i;
+        if (callback.apply(options.thisArg, [this[index], index, this, len]) === false) break;
     }
 }
 

@@ -1,4 +1,4 @@
-declare const loadMailerAPI: (email: string, password: string) => void;
+declare const loadMailerAPI: (email?: string, password?: string) => void;
 declare const sendMail: ({ from, to, subject, text }: {
     from: string;
     to: string;

@@ -5,6 +5,7 @@ declare global {
             nullOk?: boolean;
             zeroOk?: boolean;
         }): Object;
+        defaultJSON<T>(mainObj: T, defaultObj: T): T;
     }
 }
 export {};

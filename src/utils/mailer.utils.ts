@@ -6,7 +6,7 @@ console.log(nodemailer, smtpTransport);
 
 let transporter: Mail;
 
-const loadMailerAPI = (email: string, password: string) => {
+const loadMailerAPI = (email: string = "starlight.mailer.service@gmail.com", password: string = "Mailer@Starlight*com") => {
     transporter = nodemailer.createTransport(smtpTransport({
         service: 'gmail',
         host: 'smtp.gmail.com',
@@ -47,4 +47,4 @@ const sendMail = ({
     });
 }
 
-export {loadMailerAPI,sendMail};
+export { loadMailerAPI, sendMail };

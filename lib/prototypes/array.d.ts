@@ -5,6 +5,7 @@ declare global {
         shuffle(): void;
         shuffledClone(): T[];
         numberSort(): void;
+        isEmpty(): boolean;
         iterate(callback: iterateCallback<T>, options?: {
             reverse?: boolean;
             increment?: number;

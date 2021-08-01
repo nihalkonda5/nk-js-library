@@ -5,6 +5,7 @@ declare global {
             nullOk?: boolean,
             zeroOk?: boolean
         }): Object;
+        defaultJSON<T>(mainObj: T, defaultObj: T): T;
     }
 }
 
@@ -41,6 +42,26 @@ JSON.normalize = function (a: object, props: {
     }
     return data;
 }
+
+JSON.defaultJSON = function (mainObj, defaultObj) {
+    if (Object.isUndefinedOrNull(mainObj))
+        return defaultObj;
+
+    [...(new Set(
+        [
+            ...Object.keys(mainObj),
+            ...Object.keys(defaultObj),
+        ]
+    ))].forEach((key) => {
+        if (Object.isUndefined(mainObj[key])) {
+            mainObj[key] = defaultObj[key];
+        } else if (Object.isObject(mainObj[key])) {
+            mainObj[key] = JSON.defaultJSON(mainObj[key], defaultObj[key]);
+        }
+    });
+
+    return mainObj;
+};
 
 console.log('Object: new fuctions added to prototype');
 
